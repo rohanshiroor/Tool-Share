@@ -1,0 +1,69 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<div class="container">
+		<div class="row">
+		<div class="heading">
+			<h2>
+				Manage Tool Borrow Request
+			</h2>
+		</div>	
+		<div class="errormsg">{% if error %} {{ error }} {% endif %}</div>
+		<div class="msg">{% if msg %} {{ msg }} {% endif %}</div>
+		<div>
+			<table class="table table-bordered table-hover ">
+				<thead>
+				<tr class="warning">
+					<th>Tool</th>
+					<th>Category</th>
+					<th>Tool Description</th>
+					<th>Location</th>
+					<th>Owner</th>
+					<th>Borrower</th>
+					<th>Message</th>
+					<th>Return Date</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				{% if transaction %}
+				{% for t in transaction %}
+				<tbody>
+					<tr class="info">
+						<td>{{ t.tool.name }}</td>
+						<td>{{ t.tool.get_category_display }}</td>
+						<td>{{ t.tool.description }}</td>
+						<td>{{ t.tool.get_location_display }}</td>
+						<td>{{ t.tool.owner.first_name }} {{ t.tool.owner.last_name }}</td>
+						<td>{{ t.borrower.first_name }} {{ t.borrower.last_name }}</td>
+						<td>{{ t.borrow_message }}</td>
+						<td>{{ t.tool_return_date }}</td>
+						<td>{{ t.get_status_display }}</td>
+						<td>
+							{% if t.status == 'PE' %}
+							<a href="{% url 'AcceptRequest' t.id %}">Accept</a> | <a href="{% url 'RejectRequest' t.id %}">Reject</a> 
+							{% endif %}
+							{% if t.status == 'RE' %}
+                            <a href="{% url 'ToolReturnAccept' t.id %}">Accept</a>
+                            {% endif %}
+                            {% if t.status == 'CO' %}
+							<a href="{% url 'ViewComment' t.id %}">View Feedback</a>
+							{% endif %}
+						</td>
+					</tr>
+				</tbody>
+					{% endfor %}
+					{% else %}
+				<tbody>
+					<tr class="danger">
+						<td colspan="10">There are no requests available</td>
+					</tr>
+				</tbody>
+					{% endif %}
+				
+			</table>
+		</div>	
+	</div>
+	</div>
+	
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'child-base.html' %}
+ {% block innercontent %}
+<div class="container">
+	<div class="row">
+	<div class="heading">
+		<h2 class="display-2">My Tools</h2>
+	</div>
+		<div>
+		<a href="{% url 'ToolRegistration' %}" class="btn btn-info">Register Tool</a>
+		</div>
+	<div class="errormsg">
+	{% if error %}
+		{{ error }}
+	{% endif %}
+	</div>
+	<div class="msg">
+		{% if msg %}
+			{{ msg }}
+		{% endif %}
+	</div>
+	<div class="tabcontainer">
+
+		<br/>
+	<ul class="tab">
+			<li><a href="#" class="tablinks" id="defaultOpen"
+				onclick="openCity(event, 'myTools')">Shared Tools</a></li>
+			<li><a href="#" class="tablinks"
+				onclick="openCity(event, 'borrowedTools')">Borrowed Tools</a></li>
+		</ul>
+		
+		<div id="myTools" class="tabcontent">
+			<table class="table table-bordered table-hover ">
+				<thead>
+				<tr class="warning">
+					<th>Name</th>
+					<th>Category</th>
+					<th>Description</th>
+					<th>Location</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				
+				{% if tools %}
+				<tbody>
+				{% for tool in tools %}
+					<tr class="info">
+						<td><a href= "{% url 'EditTools' tool.id %}">{{ tool.name }}</a></td>
+						<td>{{ tool.get_category_display }}</td>
+						<td>{{ tool.description }}</td>
+						<td>{{ tool.get_location_display }}</td>
+						<td>{{ tool.get_status_display }}</td>
+						<td>{% if tool.status != 'DA' %}
+								<a href="{% url 'DeactivateTool' tool.id %}">Deactivate</a>
+							{% else %}
+								<a href="{% url 'DeactivateTool' tool.id %}">Activate</a>
+							{% endif %}
+						 | <a href="{% url 'DeleteTool' tool.id %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+				</tbody>
+				{% else %}
+				<tbody>
+					<tr class="danger">
+						<td colspan="6">You have no tools registered</td>
+					</tr>
+				</tbody>
+				{% endif %}
+			</table>
+		</div>
+
+		<div id="borrowedTools" class="tabcontent">
+			<table class="table table-bordered table-hover ">
+				<thead>
+				<tr class="warning">
+					<th>Name</th>
+					<th>Category</th>
+					<th>Description</th>
+					<th>Location</th>
+					<th>Owner</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% if borrowedToolTransactions %}
+				{% for transaction in borrowedToolTransactions %}
+				<!--add if which checks the status, only tools with borrowed status should be displayed -->
+					{% if transaction.status == 'AC' %}
+						<tr class="info">
+							<td>{{ transaction.tool.name }}</td>
+							<td>{{ transaction.tool.get_category_display }}</td>
+							<td>{{ transaction.tool.description }}</td>
+							<td>{{ transaction.tool.get_location_display }}</td>
+							<td>{{ transaction.tool.owner.username }}</td>
+							<td><a href="{% url 'ReturnTool' transaction.id %}">Return Tool</a></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+				{% else %}
+				</tbody>
+				<tbody>
+					<tr class="danger">
+						<td colspan="6">You have not borrowed any tools</td>
+					</tr>
+				</tbody>
+				{% endif %}
+			</table>
+		</div>
+	</div>
+	</div>
+</div>
+<script>
+	document.getElementById("defaultOpen").click();
+</script>
+{% endblock %}

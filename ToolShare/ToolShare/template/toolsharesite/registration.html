@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-wrench" aria-hidden="true"></i> ToolShare</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="errormsg">
+			{{ error }}
+</div>
+
+   <div id="registration_container">
+    <form action="/RegisterUser/" method="post" name="RegistrationForm">
+    {% csrf_token %}
+        <div id="registration_heading">
+        	<h1>User Registration</h1>
+        </div>
+        <div class="form-group">
+        	<label for="fname">First Name*</label>
+            <input id="fname" type="text" name="first_name">
+        </div>
+
+        <div class="form-group">
+        	<label for="lname">Last Name*</label>
+            <input id="lname" type="text" name="last_name">
+        </div>
+
+        <div class="form-group">
+        	<label for="email">Email*</label>
+        	<input id="email" type="email" name="email">
+        </div>
+
+        <div class="form-group">
+        	<label for="username">Username*</label>
+        	<input id="username" type="text" name="username">
+        </div>
+
+        <div class="form-group">
+        	<label for="password">Password*</label>
+        	<input id="password" maxlength="30" type="password" name="password">
+        </div>
+
+        <div class="form-group">
+        	<label for="confirmpass">Confirm Password*</label>
+        	<input id="confirmpass" maxlength="30" type="password" name="confirmpass">
+        </div>
+
+        <div class="form-group">
+        	<label for="addline1">Address Line1*</label>
+        	<input id="addline1" maxlength="100" type="text" name="address_line1">
+        </div>
+
+        <div class="form-group">
+        	<label for="addline2">Address Line2</label>
+        	<input id="addline2" maxlength="100" type="text" name="address_line2">
+        </div>
+
+        <div class="form-group">
+        	<label for="state">State*</label>
+        	<input id="state"  type="text" name="state">
+        </div>
+
+        <div class="form-group">
+        	<label for="city">City*</label>
+        	<input id="city" type="text" name="city">
+        </div>
+
+        <div class="form-group">
+        	<label for="zip">Zip code*</label>
+        	<input id="zip"  type="number" name="zip">
+        </div>
+
+        <div class="form-group">
+        	<label for="phone_no">Telephone*</label>
+        	<input id="phone_no" type="number" name="phone_no">
+        </div>
+        
+        <!-- <div class="form-group">
+        	<label for="pickUpPref">Pick Up Preference</label>
+        	<input id="pickUpPref" maxlength="100" type="text" name="pickUpPref">
+        </div> -->
+        
+        <div>
+        	{{ error }}
+        </div>
+        <div>
+        	<button class="btn btn-info" type="submit" value="Register" id="registration-button">Register</button>
+            <a href="{% url 'index' %}" class="btn btn-default" type="submit" value="Cancel" id="cancel-button">Cancel</a>
+        </div>
+        <br/>
+
+        </form>
+    </div>
+{% endblock %}

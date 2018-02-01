@@ -1,0 +1,23 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+
+<div id="dashboard_content">
+	<h4>Hello, {{ user.first_name }} {{ user.last_name}}
+		{% if user.role == 'SC' %}
+			(Shed Coordinator)
+		{% endif %}
+	</h4>
+</div>
+<br/>
+<div class="container">
+	<div class="row">
+		<div class="errormsg">{% if error %} {{ error }} {% endif %}</div>
+		<div class="msg">{% if msg %} {{ msg }} {% endif %}</div>
+	</div>
+	<div class="row">
+		<h2><u>About Us</u></h2><br/>
+		<h4>We represent a funding group (Investiny Corp.) chartered to create applications for the benefit of communities all around the country. The product we envision is called Tool Share. At its core, Tool Share is meant to enable neighbors in a community to be able to share items of common use. The successful implementation should make it easy to anyone wanting to participate to register and be able to share or borrow items. <br/><br/> The Tool Share product is intended to improve communities by providing and easy mechanism for sharing items between neighbors. We envision this to primarily consist of tool exchanges but the implementation must be easily extended to include items of different kinds.<br/><br/> We want a product whose emphasis is on ease of use, whose navigation is straightforward and where the status of items and users is clearly displayed.</h4>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<div class="toolregcontainer container">
+		<div class="row col-md-4">
+		<div class="heading">
+			<h2>Tool Registration</h2>
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		<div>
+			<form method="post" action="" enctype="multipart/form-data" name="ToolRegForm">
+			{% csrf_token %}
+			<table id="toolreg_table" class="table table-hover">
+				{% for field in toolRegistrationForm %}
+				<tr class="warning">
+					<td>{{ field.label_tag }}</td>
+                	<td>{{ field }}</td>
+                	<td>{{ field.errors }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			<div id="toolreg_button">
+				<button class="btn btn-info" type="submit" value="Register">Register</button>
+				<a href="{% url 'ToolManagement' %}" class="btn btn-default">Cancel</a>
+			</div>
+			</form>
+		</div>
+		</div>
+	</div>
+<script>
+	$("form[name='ToolRegForm']").validate({
+        rules: {
+            name: {required: true, maxlength: 200},
+            description:{required: true, maxlength: 500},
+            pick_up_preference: {required: true, maxlength: 100},
+        },
+        messages: {
+            name: {
+                required: "Please enter the tool name",
+                maxlength: "Tool name must consist of maximum 200 characters"
+            },
+            description: {
+				required: "Please enter the tool description",
+                maxlength: "Tool description must consist of maximum 500 characters"
+			},
+			pick_up_preference: {
+				required: "Please enter the pickup preference",
+				maxlength: "Pickup preference must consist of maximum 100 characters"
+			}
+        }
+    })
+</script>
+{% endblock %} 

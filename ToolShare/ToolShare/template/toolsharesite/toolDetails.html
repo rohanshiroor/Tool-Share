@@ -1,0 +1,91 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+{% load staticfiles %}
+	<div class="container">
+		<div class="row">
+		<div class="tool_heading">
+			<h2>Tool Details</h2>
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		
+		<div>
+			{% if tool.image %}
+			<div>
+				<label for="tool_image">Image:</label>
+				<img id="tool_image" alt="" src="{{tool.image.url}}" height="172px" width="300px">
+			</div>
+			{% else %}
+			<div>
+				<label for="tool_image">Image:</label>
+				<img id="tool_image" alt="" src="{% static 'default_image/default.png' %}" height="172px" width="220px">
+			</div>
+			{% endif %}
+			&nbsp;
+			<div>
+				<label for="name">Name:</label>
+				<input id="name" type="text" value="{{ tool.name }}" disabled="disabled">
+			</div>
+			<div>
+				<label for="category">Category:</label>
+				<input id="category" type="text" value="{{ tool.get_category_display }}" disabled="disabled" >
+			</div>
+			<div>
+				<label for="category">Owner:</label>
+				<input id="category" type="text" value="{{ tool.owner.first_name }} {{ tool.owner.last_name }}" disabled="disabled" >
+			</div>
+			<div>
+				<label for="desc">Description:</label>
+				<textarea id="desc" value="{{ tool.description }}" disabled="disabled">{{ tool.description }}</textarea>
+			</div>
+			<div>
+				<label for="condition">Condition:</label>
+				<input id="condition" type="text" value="{{ tool.get_condition_display }}" disabled="disabled">
+			</div>
+		<!--	<div>
+				<label for="owner">Owner:</label>
+				<input id="owner" type="text" value="{{ tool.owner.first_name }} {{ tool.owner.last_name }}" disabled="disabled">
+			</div> -->
+			<div>
+				<label for="loc">Location:</label>
+				<input id="loc" type="text" value="{{ tool.get_location_display }}" disabled="disabled">
+				{% if tool.location == 'H' %}
+					<!-- <output> -->
+						[{{tool.owner.address_line1}},
+						{% if  tool.owner.address_line2 %}{{tool.owner.address_line2}}, {% endif%}
+						{{ tool.owner.city }},
+						{{ tool.owner.state }} 
+						{{ tool.owner.zip }}]
+					<!-- </output> -->
+				{% else %}
+					<!-- <output> -->
+						{{community_shed.address_line1}}, 
+						{% if community_shed.address_line2 %}{{ community_shed.address_line2 }}, {% endif%}
+						{{ community_shed.city }}
+						{{ community_shed.state }}
+						{{ community_shed.zip }}	
+					<!-- </output> -->
+				{% endif %}
+			</div>
+			<div>
+				<label for="ins">Special Instruction:</label>
+				<textarea id="ins" value="{{ tool.special_instruction }}" disabled="disabled">{{ tool.special_instruction }}</textarea>
+			</div>
+			<div>
+				<label for="pickup">Pick Up Preference:</label>
+				<input id="pickup" type="text" value="{{ tool.pick_up_preference }}" disabled="disabled">
+			</div>
+		</div>
+		<br/>
+		{% if user != tool.owner and tool.status != 'BO' %}
+
+		<div id="toolreg_button">
+			<a href="{% url 'RequestTool' tool.id %}" class="btn btn-info">Borrow</a>
+		{% endif %}
+			<a href="{% url 'Shed' %}" class="btn btn-default">Back</a>
+		</div>
+		</div>
+	</div>
+{% endblock %}

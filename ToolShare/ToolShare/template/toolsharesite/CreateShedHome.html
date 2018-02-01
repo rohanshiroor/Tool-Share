@@ -1,0 +1,54 @@
+{% extends 'child-base.html' %}
+{% block innercontent %}
+
+<div class="container">
+	<div class="row">
+	<div id="createshedhome_container" class="container col-md-4 col-md-offset4">
+		<div class="msg">
+			{{ msg }}
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		<div class="heading">
+			<h2>
+				Create Community Shed
+			</h2>
+		</div>
+		
+		<form action="{% url 'CreateCommunityShedHome' %}" method="post" name="CreateShedHomeForm">
+		{% csrf_token %}
+			<table class="table table-hover">
+            {% for field in form %}
+            <tr class="warning">
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+                <td>{{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+		<div id="toolreg_button">
+         <button type="submit" class="btn btn-info" value="Create">Create</button>
+            <a href="{% url 'Dashboard' %}" class="btn btn-default">Cancel</a>
+		</div>
+         </form>
+      </div>
+   </div>
+</div>
+<script>
+	$("form[name='CreateShedHomeForm']").validate({
+        rules: {
+        address_line1: {required: true, maxlength: 100},
+        state:{required: true, maxlength: 30},
+        city:{required: true ,maxlength: 100},
+    },
+    messages: {
+        address_line1:{required:"Please enter your Address Line1", maxlength: "Your Address line1 must consist of maximum 100 characters"},
+        state: {required:"Please enter your State", maxlength: "Your State must consist of maximum 30 characters"},
+        city:{required:"Please enter your City", maxlength: "Your City must consist of maximum 100 characters"},
+    }
+    })
+</script>
+
+{% endblock %}
+

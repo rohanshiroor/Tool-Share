@@ -1,0 +1,63 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<div id="borrowedTools" class="container">
+        <div class="row col-md-4">
+		<div class="heading">
+			<h2>
+				Update Tool
+			</h2>
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		<form action="{% url 'EditTools' tool.id %}" method="post" name="EditToolForm">
+		{% csrf_token %}
+		<!-- <div>
+			{% if tool.image %}
+			<img alt="" src="{{tool.image.url}}" height="172px" width="300px">
+			{% endif %}	
+		</div> -->
+			<table class="table table-bordered table-hover">
+            {% for field in form %}
+            <tr class="warning">
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+                <td>{{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div id="toolreg_button">
+         <button class="btn btn-info" type="submit" value="Update">Update</button>
+            <a href="{% url 'ToolManagement'%}" class="btn btn-default">Cancel</a>
+        </div>
+         </form>
+      </div>
+    </div>
+   </div>
+<script>
+	$("form[name='EditToolForm']").validate({
+        rules: {
+            name: {required: true, maxlength: 200},
+            description:{required: true, maxlength: 500},
+            pick_up_preference: {required: true, maxlength: 100},
+        },
+        messages: {
+            name: {
+                required: "Please enter the tool name",
+                maxlength: "Tool name must consist of maximum 200 characters"
+            },
+            description: {
+				required: "Please enter the tool description",
+                maxlength: "Tool description must consist of maximum 500 characters"
+			},
+			pick_up_preference: {
+				required: "Please enter the pickup preference",
+				maxlength: "Pickup preference must consist of maximum 100 characters"
+			}
+        }
+    })
+</script>
+
+{% endblock %}
+

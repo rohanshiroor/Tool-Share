@@ -1,0 +1,99 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+{% load staticfiles %}
+<div id="margin_30">
+	<div id="shed_container">
+			<h2>
+				Borrow Tools
+			</h2>
+	<div class="errormsg">{% if error %} {{ error }} {% endif %}</div>
+	<div class="msg">{% if msg %} {{ msg }} {% endif %}</div>
+
+	<!-- {% if shedIndicator %} -->
+		<!-- <div>
+			<h3>Tools available in the Shed</h3>
+			<h3>Available Tools</h3>
+		</div> -->
+	</div>
+		<!-- <div>
+			<h5>Shed Location : {{shed.address_line1}},{{shed.state}},{{shed.city}},{{shed.zip}} 
+			
+			</h5>
+		</div> -->
+		<!-- <div>
+			<table id="shed_table" border="1">
+				<tr>
+					<th>NAME</th>
+					<th>CATEGORY</th>
+					<th>DESCRIPTION</th>
+					<th>OWNER</th>
+					<th>STATUS</th>
+					<th>ACTION</th>
+				</tr>
+				{% if tools %}
+				{% for tool in tools %}
+					<tr>
+						<td>{{ tool.name }}</td>
+						<td>{{ tool.get_category_display }}</td>
+						<td>{{ tool.description }}</td>
+						<td>{{ tool.owner.username }}</td>
+						<td>{{ tool.get_status_display }}</td>
+						<td>
+							{% if tool.owner == user or tool.status == 'BO' %}
+							<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+							{% else %}
+							<a href="{% url 'RequestTool' tool.id %}">Request Tool</a>
+							{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+					{% else %}
+					<tr>
+						<td colspan="6">No tools available</td>
+					</tr>
+					{% endif %}
+				
+			</table>
+		
+		</div>
+		{% else %}
+		<div>
+		<p>
+			There is no community shed created for your share zone.<br/> 
+			You can create a community shed by clicking the 'Create Shed' link below.
+		</p> 
+			<a href="{% url 'CreateShed' %}">Create Shed</a>
+			
+		</div>
+		{% endif %} -->
+<div>
+	{% if tools %}
+	{% for tool in tools %}
+
+  		<div class="col-sm-6 col-md-3">
+    		<div class="thumbnail">
+    		{% if tool.image %}
+      			<img id="image-height" src="{{tool.image.url}}" alt=""/  >
+      		{% else %}
+      			<img src="{% static 'default_image/default.png' %}">
+      		{% endif %}
+      			<div class="caption">
+        			<h3>{{ tool.name }}</h3>
+        			<p>Category : {{ tool.get_category_display }}</p>
+					<p>Status : {{ tool.get_status_display }}</p>
+		  			<p><a href="{% url 'ViewToolDetails' tool.id %}" class="btn btn-info" role="button">View</a><p>
+      			</div>
+    		</div>
+  		</div>
+
+	{% endfor %}
+	{% else %}
+		<div>
+			<p colspan="6">No tools available</p>
+		</div>
+	{% endif %}
+</div>
+</div>
+
+{% endblock %}

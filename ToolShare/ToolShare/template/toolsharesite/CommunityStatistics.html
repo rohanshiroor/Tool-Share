@@ -1,0 +1,84 @@
+{% extends 'child-base.html' %}
+ {% block innercontent %}
+<div class="container">
+	<div class="row">
+	<div class="heading">
+		<h2>Community Statistics</h2>
+	</div>
+		{% if transactions %}
+		<div id="TopTools"class="tab-content">
+
+			<table class="table table-bordered table-hover">
+				<caption>Top Tools</caption>
+
+			<tr class="info">
+			<th> Tool Name</th>
+			<th> Owner</th>
+			<th>Location</th>
+			<th>Times Requested</th>
+			</tr>
+			{% for tool,owner,location,count in toptools %}
+			<tr class="warning">
+			<td>{{tool}}</td>
+			<td>{{owner}}</td>
+			<td>{{location}}</td>
+			<td>{{count}}</td>
+			</tr>
+
+			{% endfor %}
+			</table>
+		</div>
+		<br>
+		<div id="TopBorrowers"class="tab-content">
+			<table class="table table-bordered table-hover">
+				<caption>Top Borrowers</caption>
+			<tr class="info">
+			<th> First Name</th>
+			<th> Last Namer</th>
+			<th>Username</th>
+			<th>Times Borrowed</th>
+			</tr>
+			{% for fname,lname,uname,count in topborrowers %}
+			<tr class="warning">
+			<td>{{fname}}</td>
+			<td>{{lname}}</td>
+			<td>{{uname}}</td>
+			<td>{{count}}</td>
+			</tr>
+
+			{% endfor %}
+			</table>
+		</div>
+
+		<br>
+
+		<div id="TopLenders"class="tab-content">
+			<table class="table table-bordered table-hover">
+				<caption>Top Lenders</caption>
+			<tr class="info">
+			<th> First Name</th>
+			<th> Last Namer</th>
+			<th>Username</th>
+			<th>Times Lended</th>
+			</tr>
+			{% for fname,lname,uname,count in toplenders %}
+			<tr class="warning">
+			<td>{{fname}}</td>
+			<td>{{lname}}</td>
+			<td>{{uname}}</td>
+			<td>{{count}}</td>
+			</tr>
+
+			{% endfor %}
+			</table>
+		</div>
+        {% else %}
+		<tr class="alert">
+			<td colspan="10">There are no Statistics Available</td>
+		</tr>
+
+		{% endif %}
+
+	</div>
+</div>
+{% endblock %}

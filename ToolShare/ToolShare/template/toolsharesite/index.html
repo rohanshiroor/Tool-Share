@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="index_container">
+		<div id="index_header"><h1><strong>ToolShare</strong></h1></div>
+		
+
+	</div>
+   <div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form method="post" action="/Login/" role="form">
+									{% csrf_token %}
+									<div class="form-group">
+										<label>Username</label>
+            							<input type="text" id="username" tabindex="1" class="form-control" autofocus name="username" value="{{ userinfo.username }}" required placeholder="Enter Username"/>
+									</div>
+									<div class="form-group">
+										<label>Password</label>
+            							<input name="password" id="password" tabindex="2" class="form-control" value="{{ userinfo.password }}" type="password" required placeholder="Enter Password"/>
+									</div>
+									{{ error }}
+									<div class="form-group">
+										<div class="row">
+											<div id="signup">
+												<button type="submit" name="login-submit" class="btn btn-info" value="Login">Login</button>
+											</div>
+										</div>
+									</div>
+									<div>
+    								{% if form.errors %}
+                    				<p>Your username and password didn't match. Please try again</p>
+                					{% endif %}
+    								</div>
+									<div id="signup">
+             							<a href="/RegisterUser/" class="btn btn-default">Join Now</a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    </div>
+{% endblock %}

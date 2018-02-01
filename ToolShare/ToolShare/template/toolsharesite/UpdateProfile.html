@@ -1,0 +1,56 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<div id="updateprofile_container" class="container">
+		<div class="row col-md-4">
+            <div class="heading">
+			<h2>
+				Update User Profile
+			</h2>
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		<form action="{% url 'UpdateProfile' %}" method="post" name="UpdateProfileForm">
+		{% csrf_token %}
+			<table class="table table-hover">
+            {% for field in form %}
+            <tr class="warning">
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+                <td>{{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div id="toolreg_button">
+         <button class="btn btn-info" type="submit" value="Update">Update</button>
+            <a href="{% url 'Dashboard' %}" class="btn btn-default">Cancel</a>
+        </div>
+         </form>
+      </div>
+   </div>
+<script>
+	$("form[name='UpdateProfileForm']").validate({
+        rules: {
+            first_name: {required: true, maxlength: 30},
+        last_name: {required: true, maxlength: 30},
+        email:{required: true, email: true},
+        address_line1: {required: true, maxlength: 100},
+        state:{required: true, maxlength: 30},
+        city:{required: true, maxlength: 100},
+        phone_no:{required: true, maxlength: 15},
+    },
+    messages: {
+        first_name: {required:"Please enter your Firstname", maxlength: "Your Firstname must consist of maximum 30 characters"},
+        last_name: {required:"Please enter your Lastname", maxlength: "Your Lastname must consist of maximum 30 characters"},
+        email: {email:"Enter valid Email", required: "Please enter your Email"},
+        address_line1:{required:"Please enter your Address Line1", maxlength: "Your Address line1 must consist of maximum 100 characters"},
+        state: {required:"Please enter your State", maxlength: "Your State must consist of maximum 30 characters"},
+        city:{required:"Please enter your City", maxlength: "Your City must consist of maximum 100 characters"},
+        phone_no:{required:"Please enter your Telephone", maxlength: "Your Telephone must consist of maximum 15 characters"},
+    }
+    })
+</script>
+
+{% endblock %}
+

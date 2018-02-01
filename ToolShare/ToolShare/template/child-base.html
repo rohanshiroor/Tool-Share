@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'Dashboard' %}"><i class="fa fa-wrench" aria-hidden="true"></i> ToolShare</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'UpdateProfile'%}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+		  <li><a href="{% url 'CreateShedHome'%}"><i class="fa fa-server" aria-hidden="true"></i> Community Shed</a></li>
+		  <li><a href="{% url 'getNotifications' %}" ><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
+        <li><a href="{% url 'Logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+		<div class="container-fluid display-table col-md-2">
+			<div class="row">
+            	<div class="col-md-12 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                	<div class="navi">
+                    <ul class="navi1">
+                        <li><a href="{% url 'Dashboard' %}"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="{% url 'Shed' %}"><i class="fa fa-plus" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Borrow</span></a></li>
+                        <li><a href="{% url 'ToolManagement' %}"><i class="fa fa-wrench" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Tools</span></a></li>
+						<li><a href="{% url 'ManageRequest' %}"><i class="fa fa-group" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Requests</span></a></li>
+						<li><a href="{% url 'CommunityStatistics' %}"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Community Statistics</span></a></li>
+                    </ul>
+                	</div>
+            	</div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+			</div>
+			</div>
+		</div>
+
+		<div class="col-md-10">
+			<div class="row">
+			<div>
+				{% block innercontent %}
+
+				{% endblock innercontent %}
+			</div>
+			</div>
+		</div>
+
+<script>
+$(document).ready(function() {
+    $(".navi1 a").on("click", function(){
+        $(".navi1").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+    });
+});
+</script>
+{% endblock %}

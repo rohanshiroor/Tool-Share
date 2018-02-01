@@ -1,0 +1,351 @@
+#image-height{
+    height: 172px;
+    width: 180px;
+}
+
+
+input{
+    border-radius:4px;
+}
+
+select{
+    border-radius:4px;
+}
+
+textarea{
+    border-radius:4px;
+    width: 168px;
+}
+
+.heading{
+    color:#0e1a35;
+}
+
+.error{
+    margin-right:30px;
+    color:red;
+}
+
+#index_paragraph{
+    margin-bottom:50px;
+}
+
+#index_header{
+    text-align:center;
+}
+
+.navbar-inverse{
+    background:#0e1a35;
+    border-radius:0px;
+    margin-bottom:0px;
+    height:60px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffb308;
+    font-size:30px;
+}
+
+.navbar-right {
+    margin-top: 5px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffb308;
+}
+
+#navigation{
+    height:698px;
+}
+
+.navi i{
+    color: #ffb308;
+}
+
+.navi a{
+    color:#ffb308;
+}
+
+#login-submit{
+    height:15px;
+}
+
+#shed_table{
+    text-align:center;
+    width:600px;
+    height:300px;
+}
+
+#shed_table th{
+    text-align:center;
+    background-color:#0e1a35;
+    color :white;
+}
+
+#shed_container{
+    font-size: 12px;
+    margin-left:15px;
+}
+
+#margin_30{
+    margin:30px;
+}
+
+.errormsg{
+    color: red;
+}
+
+#dashboard_content{
+    float:right;
+    color:black;
+    padding-right:20px;
+}
+
+.tool_container{
+    margin-left:20px;
+}
+
+ul .tab{
+    width: 100%;
+}
+
+#myTools{
+    color:black;
+    width:100%;
+}
+
+#borrowedTools{
+    width:100%;
+}
+
+#signup{
+    text-align: center;
+}
+
+#registration_container{
+    text-align:left;
+    background: #71829300;
+    margin-left: 15px;
+    color: black;
+}
+
+label {
+    display: inline-block;
+    width: 130px;
+    text-align: left;
+}
+
+#registration_container input{
+    align:left;
+}
+
+#toolreg_table input{
+    width:200px;
+}
+
+.toolregcontainer textarea{
+    height:60px;
+}
+
+#id_category{
+    width:200px;
+}
+
+#id_location{
+    width:200px;
+}
+
+#id_condition{
+    width:200px;
+}
+
+#id_description{
+    width:200px;
+}
+
+#id_special_instruction{
+    width:200px;
+}
+
+#id_borrow_message{
+    width:178px;
+}
+
+#id_phone_no{
+    width:178px;
+}
+
+#background{
+    background-image: url('images/tool2.jpg');
+}
+
+/* .thumbnail .caption {
+    text-align: right;
+    margin-top:-40px;
+} */
+
+#toolreg_button{
+    margin-left:140px;
+}
+
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: black;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: solid;
+    border-radius: 4px;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+
+@CHARSET "ISO-8859-1";
+
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #ccc;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    margin-right: 170px;
+}
+
+input {
+	color: black !important; 
+}
+
+#registration_container{
+    background: rgba(30, 144, 255, 0) !important;
+}
+
+#registration-button {
+	color:white !important;
+}
+
+.errormsg{
+	color : red !important;
+	font-size: 20px;
+}
+
+.msg{
+	color : black !important;
+	font-size: 20px;
+}

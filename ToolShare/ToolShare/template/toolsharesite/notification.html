@@ -1,0 +1,57 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<!-- <div class="errormsg">
+	{% if error %}
+		{{ error }}
+	{% endif %}
+	</div>
+	<div class="msg">
+		{% if msg %}
+			{{ msg }}
+		{% endif %}
+	</div> -->
+	<div class="container">
+		<div class="row col-md-8">
+		<div id="myNotifications">
+			<div class="heading">
+				<h2>Notifications</h2>
+			</div>
+			<table class="table table-bordered table-hover" >
+				<thead>
+					<tr class="info">
+						<!-- <th>Select</th> -->
+						<th>Date</th>
+						<th>Notification</th>
+						<!-- <th>Action</th> -->
+					</tr>
+				</thead>
+				{% if notifications %}
+				<tbody>
+					
+					{% for notification in notifications %}
+					<tr class="warning">
+						<!-- <td><input type="checkbox"></td> -->
+						<td>{{ notification.timestamp }}</td>
+						<td>{{ notification.verb }}</td>
+						<!-- <td><a href="#">Delete</a></td> -->
+					</tr>
+					{% endfor %}
+				</tbody>
+				
+				{% else %}
+					
+				<tbody>
+					<tr class="warning">
+						<td colspan="6">You have no notifications</td>
+					</tr>
+				
+				</tbody>
+				{% endif %}
+			
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

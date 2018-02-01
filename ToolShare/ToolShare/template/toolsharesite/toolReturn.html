@@ -1,0 +1,41 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+<div class="container">
+	<div class="row">
+	<form action="{% url 'ReturnTool' transaction.id %}" method="post">
+	<div id="ToolReturn Heading">
+        	<h2>
+        		Tool Return
+        	</h2>
+    </div>
+
+
+
+	<div class="form-group">
+		{% csrf_token %}
+		<div>
+			<label for="owner">Owner:</label>
+			<input type="text" id="owner" value="{{transaction.lender.first_name}} {{transaction.lender.last_name}}" readonly>
+		</div>
+		<div>
+			<label for="tool">Tool:</label>
+			<input type="text" id="tool" value="{{transaction.tool.name}}" readonly>
+		</div>
+		<div>
+			<label for="tool">Return Date:</label>
+			<input type="text" id="return_date" value="{{transaction.tool_return_date}}" readonly>
+		</div>
+
+    {{ form }}
+
+	</div>
+	<div id="toolreg_button">
+		<button class="btn btn-info" type="submit" value="submit">Submit</button>
+     <a href="{% url 'ToolManagement' %}" class="btn btn-default">Cancel</a>
+	</div>
+	
+	</form>
+    </div>
+</div>
+{% endblock %}

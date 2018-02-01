@@ -1,0 +1,54 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+<div class="container">
+	<div class="row col-md-4">
+	<div class="heading">
+		<h3>Submit request to borrow tool</h3>
+	</div>
+	<div class="errormsg">
+	{% if error %}
+		{{ error }}
+	{% endif %}
+	</div>
+	<div class="msg">
+		{% if msg %}
+			{{ msg }}
+		{% endif %}
+	</div>
+	
+	<div>
+			<form method="post" action="" name="toolRequestForm">
+			{% csrf_token %}
+			<table class="table table-bordered table-hover">
+				{% for field in toolBorrowForm %}
+				<tr class="warning">
+					<td>{{ field.label_tag }}</td>
+                	<td>{{ field }}</td>
+                	<td>{{ field.errors }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			<div id="toolreg_button">
+			<button class="btn btn-info" type="submit" value="Register">Submit</button>
+			</form>
+				<a href="{% url 'Shed' %}" class="btn btn-default">Cancel</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$("form[name='toolRequestForm']").validate({
+        rules: {
+			borrow_message: {required: true, maxlength: 200},
+        },
+        messages: {
+            borrow_message: {
+                required: "Please enter the borrow message",
+                maxlength: "Borrow message must consist of maximum 200 characters"
+            }
+        }
+    })
+</script>
+
+{% endblock %}

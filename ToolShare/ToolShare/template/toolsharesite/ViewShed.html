@@ -1,0 +1,51 @@
+{% extends 'child-base.html' %}
+
+{% block innercontent %}
+	<div class="container">
+		<div class="row">
+		<div class="tool_heading">
+			<h2>Community Shed Details</h2>
+		</div>
+		<div class="errormsg">
+			{{ error }}
+		</div>
+		<!-- <div>
+			{% csrf_token %}
+			<p><img alt="" src="{{ tool.image.url }}"></p>
+			{{ toolForm }}
+		</div> -->
+
+		<div>
+			<div>
+				<label for="shedCoordinatorName">Shed Coordinator</label>
+				<input id="shedCoordinatorName" type="text" value="{{ communityShed.shed_coordinator.first_name }} {{ communityShed.shed_coordinator.last_name }}" disabled="disabled">
+			</div>
+            <div>
+				<label for="address1">Address 1</label>
+				<input id="address1" type="text" value="{{ communityShed.address_line1 }}" disabled="disabled">
+			</div>
+			<div>
+				<label for="address2">Address 2</label>
+				<input id="address2" type="text" value="{{ communityShed.address_line2 }}" disabled="disabled">
+			</div>
+            <div>
+				<label for="city">City</label>
+				<input id="city" type="text" value="{{ communityShed.city }}" disabled="disabled">
+			</div>
+            <div>
+				<label for="state">State</label>
+				<input id="state" type="text" value="{{ communityShed.state }}" disabled="disabled">
+			</div>
+            <div>
+				<label for="zip">Zip</label>
+				<input id="zip" type="text" value="{{ communityShed.zip }}" disabled="disabled">
+			</div>
+			<br/>
+			<div id="toolreg_button">
+				<a href="{% url 'Dashboard' %}" class="btn btn-default">Back</a>
+			</div>
+		</div>
+
+	</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="success_container">
+		<div class="alert alert-dismissible alert-success">
+  			<button type="button" class="close" data-dismiss="alert">&times;</button>
+  			<strong>Shed has been created successfully!</strong>
+		</div>
+		<div>
+			<a href="{% url 'index' %}">Go back to login</a>
+		</div>
+	</div>
+{% endblock %}
